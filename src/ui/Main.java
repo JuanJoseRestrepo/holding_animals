@@ -19,7 +19,9 @@ public class Main {
 		while(inputUser != 2) {
 			
 			if(inputUser == 1) {
-				
+				System.out.println("s");
+
+				br.close();
 			}
 			
 			
