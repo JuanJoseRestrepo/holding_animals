@@ -78,17 +78,17 @@ public class Club implements Serializable {
 		
 		for(int i = 0; i < owners.size() && !t;i++) {
 			if(idOwner != owners.get(i).getIdOwner()) {
-			msj = "Se agrego el cliente";
+			msj += "Se agrego el cliente";
 			owners.add(new Owner(idOwner,ownerNames,ownerSecondNames,typeOfAnimalsPrefer,bornDay));
 			t = true;
 			}else {
-				msj = "No se encontro ninguno distinto";
+				msj += "No se encontro ninguno distinto";
 			}
 		}
 		return msj;
 	}
 	
-	public void saveObjectsInFile() {
+	public void saveObjectsInFileOwners() {
 		File fl = new File("Owners.txt");
 		
 		try {
@@ -98,11 +98,24 @@ public class Club implements Serializable {
 			for (int i = 0; i < owners.size(); i++) {
 				
 				ob.writeObject(owners);
-				ob.close();
+			
 			}
+			ob.close();
 		}catch(IOException e) {
 			System.out.println("No se pudo leer");
 		}
+	}
+	
+	public void searchForTheOwner(long idClient, long idPet,String petName, String gender,String typeOfPet,String bornPetDay) {
+		
+		for (int i = 0; i < owners.size(); i++) {
+			if(idClient == owners.get(i).getIdOwner()) {
+				owners.get(i).addAnimals(idPet, petName, gender, typeOfPet, bornPetDay);
+				owners.get(i).saveObjectsInFilePets();
+			}
+			
+		}
+		
 	}
 	
 	

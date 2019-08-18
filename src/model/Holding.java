@@ -20,14 +20,22 @@ public class Holding implements Serializable{
 		clubs = new ArrayList<Club>();
 	}
 	
+	public void findClubWithClubAndOwnerAndPet(long idClubs,long idClien,long idPet,String petName, String gender,String typeOfPet,String bornPetDay){
+		for(int i = 0; i < clubs.size();i++) {
+			if(idClubs == clubs.get(i).getIdClub()) {
+				clubs.get(i).searchForTheOwner(idClubs,idPet, petName, gender, typeOfPet, bornPetDay);
+			}
+		}
+	}
+	
 	public String findClubForOwner(long idClub, long idOwner,String ownerNames, String ownerSecondNames,String typeOfAnimalsPrefer,String bornDay) {
 		String msj = "";
 		
 		for (int i = 0; i < clubs.size(); i++) {
 			if(idClub == clubs.get(i).getIdClub()) {
-				msj = "Se encontro el club y se agrego";
+				msj += "Se encontro el club y se agrego";
 				clubs.get(i).addOwners(idOwner,ownerNames,ownerSecondNames,typeOfAnimalsPrefer,bornDay);
-				clubs.get(i).saveObjectsInFile();
+				clubs.get(i).saveObjectsInFileOwners();
 			}	
 		}
 		

@@ -1,4 +1,8 @@
 package model;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.*;
 
 public class Owner {
@@ -70,10 +74,31 @@ public class Owner {
 		this.pets = pets;
 	}
 	
-	public void addAnimals() {
+	public void addAnimals(long idPet,String petName, String gender,String typeOfPet,String bornPetDay) {
 		
+		for(int i = 0; i < pets.size();i++) {
+			if(petName != pets.get(i).getPetName()) {
+				pets.add(new Pet(idPet,petName,gender,typeOfPet,bornPetDay));
+			}
+		}
 	}
 	
+	public void saveObjectsInFilePets() {
+		File fl = new File("Pets.txt");
+		
+		try {
+			FileOutputStream file = new FileOutputStream(fl);
+			ObjectOutputStream ob = new ObjectOutputStream(file);
+			
+			for (int i = 0; i < pets.size(); i++) {
+				
+				ob.writeObject(pets);
+			}
+			ob.close();
+		}catch(IOException e) {
+			System.out.println("No se pudo leer");
+		}
+	}
 
 	
 }

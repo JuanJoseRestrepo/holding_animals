@@ -1,6 +1,6 @@
 package ui;
 import model.*;
-import java.io.*;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -15,7 +15,7 @@ public class Main {
 		system = new Holding();
 	}
 	
-	public void showMenu() throws IOException{
+	public void showMenu(){
 		int inputUser = 0;
 		
 		System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
@@ -123,7 +123,7 @@ public class Main {
 	}//FinalDeShowMenu
 	
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args){
 		Main m = new Main();
 		m.showMenu();
 	}
