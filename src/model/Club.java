@@ -1,7 +1,17 @@
 package model;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.*;
 
-public class Club {
+public class Club implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	//relaciones
 	private ArrayList<Owner> owners;
@@ -59,6 +69,40 @@ public class Club {
 	
 	public void setOwners(ArrayList<Owner> owners) {
 		this.owners = owners;
+	}
+	
+	public String addOwners(long idOwner, String ownerNames, String ownerSecondNames,String typeOfAnimalsPrefer,String bornDay) {
+		String msj = " ";
+		
+		boolean t = false;
+		
+		for(int i = 0; i < owners.size() && !t;i++) {
+			if(idOwner != owners.get(i).getIdOwner()) {
+			msj = "Se agrego el cliente";
+			owners.add(new Owner(idOwner,ownerNames,ownerSecondNames,typeOfAnimalsPrefer,bornDay));
+			t = true;
+			}else {
+				msj = "No se encontro ninguno distinto";
+			}
+		}
+		return msj;
+	}
+	
+	public void saveObjectsInFile() {
+		File fl = new File("Owners.txt");
+		
+		try {
+			FileOutputStream file = new FileOutputStream(fl);
+			ObjectOutputStream ob = new ObjectOutputStream(file);
+			
+			for (int i = 0; i < owners.size(); i++) {
+				
+				ob.writeObject(owners);
+				ob.close();
+			}
+		}catch(IOException e) {
+			System.out.println("No se pudo leer");
+		}
 	}
 	
 	

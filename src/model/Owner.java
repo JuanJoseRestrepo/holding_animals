@@ -70,7 +70,10 @@ public class Owner {
 		this.pets = pets;
 	}
 	
+	public void addAnimals() {
+		
+	}
 	
-	
+
 	
 }
