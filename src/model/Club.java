@@ -17,12 +17,12 @@ public class Club implements Serializable {
 	private ArrayList<Owner> owners;
 	
 	//Atributos
-	private long idClub;
+	private String idClub;
 	private String nameClub;
 	private String creationDate;
 	private String typeOfAnimals;
 	
-	public Club(long idClub,String nameClub,String creationDate,String typeOfAnimals) {
+	public Club(String idClub,String nameClub,String creationDate,String typeOfAnimals) {
 		this.idClub = idClub;
 		this.nameClub = nameClub;
 		this.creationDate = creationDate;
@@ -31,11 +31,11 @@ public class Club implements Serializable {
 		owners = new ArrayList<Owner>();
 	}
 	
-	public long getIdClub() {
+	public String getIdClub() {
 		return idClub;
 	}
 	
-	public void setIdClub(long idClub) {
+	public void setIdClub(String idClub) {
 		this.idClub = idClub;
 	}
 	
@@ -71,7 +71,7 @@ public class Club implements Serializable {
 		this.owners = owners;
 	}
 	
-	public String addOwners(long idOwner, String ownerNames, String ownerSecondNames,String typeOfAnimalsPrefer,String bornDay) {
+	public String addOwners(String idOwner, String ownerNames, String ownerSecondNames,String typeOfAnimalsPrefer,String bornDay) {
 		String msj = " ";
 		
 		boolean t = false;
@@ -89,7 +89,7 @@ public class Club implements Serializable {
 	}
 	
 	public void saveObjectsInFileOwners() {
-		File fl = new File("Owners.txt");
+		File fl = new File("Documents\\holding_animals\\archivos\\Owners.txt");
 		
 		try {
 			FileOutputStream file = new FileOutputStream(fl);
@@ -106,12 +106,12 @@ public class Club implements Serializable {
 		}
 	}
 	
-	public void searchForTheOwner(long idClient, long idPet,String petName, String gender,String typeOfPet,String bornPetDay) {
+	public void searchForTheOwner(String idClient, String idPet,String petName, String gender,String typeOfPet,String bornPetDay) {
 		
 		for (int i = 0; i < owners.size(); i++) {
 			if(idClient == owners.get(i).getIdOwner()) {
 				owners.get(i).addAnimals(idPet, petName, gender, typeOfPet, bornPetDay);
-				owners.get(i).saveObjectsInFilePets();
+				saveObjectsInFileOwners();
 			}
 			
 		}

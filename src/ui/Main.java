@@ -73,7 +73,7 @@ public class Main {
 				reader.nextLine();
 				
 				System.out.println("Digite el id del dueño");
-				long idCli = reader.nextLong();
+				String idCli = 
 				reader.nextLine();
 				
 				System.out.println("Digite su nombre o sus nombres");

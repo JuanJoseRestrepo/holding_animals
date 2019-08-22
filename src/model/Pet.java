@@ -2,13 +2,13 @@ package model;
 
 public class Pet {
 
-	private long idPet;
+	private String idPet;
 	private String petName;
 	private String gender;
 	private String typeOfPet;
 	private String bornPetDay;
 	
-	public Pet(long idPet,String petName,String gender,String typeOfPet,String bornPetDay) {
+	public Pet(String idPet,String petName,String gender,String typeOfPet,String bornPetDay) {
 		
 		this.idPet = idPet;
 		this.petName = petName;
@@ -18,11 +18,11 @@ public class Pet {
 		
 	}
 	
-	public long getIdPet() {
+	public String getIdPet() {
 		return idPet;
 	}
 	
-	public void setIdPet(long idPet) {
+	public void setIdPet(String idPet) {
 		this.idPet = idPet;
 	}
 	

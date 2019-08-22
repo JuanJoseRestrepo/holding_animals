@@ -9,13 +9,13 @@ public class Owner {
 
 	private ArrayList<Pet> pets;
 	
-	private long idOwner;
+	private String idOwner;
 	private String ownerNames;
 	private String ownerSecondNames;
 	private String typeOfAnimalsPrefer;
 	private String bornDay;
 	
-	public Owner(long idOwner,String ownerNames,String ownerSecondNames,String typeOfAnimalsPrefer,String bornDay) {
+	public Owner(String idOwner,String ownerNames,String ownerSecondNames,String typeOfAnimalsPrefer,String bornDay) {
 		this.idOwner = idOwner;
 		this.ownerNames = ownerNames;
 		this.ownerSecondNames = ownerSecondNames;
@@ -26,11 +26,11 @@ public class Owner {
 		
 	}
 	
-	public long getIdOwner() {
+	public String getIdOwner() {
 		return idOwner;
 	}
 	
-	public void setIdOwner(long idOwner) {
+	public void setIdOwner(String idOwner) {
 		this.idOwner = idOwner;
 	}
 	
@@ -74,7 +74,7 @@ public class Owner {
 		this.pets = pets;
 	}
 	
-	public void addAnimals(long idPet,String petName, String gender,String typeOfPet,String bornPetDay) {
+	public void addAnimals(String idPet,String petName, String gender,String typeOfPet,String bornPetDay) {
 		
 		for(int i = 0; i < pets.size();i++) {
 			if(petName != pets.get(i).getPetName()) {
@@ -83,22 +83,5 @@ public class Owner {
 		}
 	}
 	
-	public void saveObjectsInFilePets() {
-		File fl = new File("Pets.txt");
-		
-		try {
-			FileOutputStream file = new FileOutputStream(fl);
-			ObjectOutputStream ob = new ObjectOutputStream(file);
-			
-			for (int i = 0; i < pets.size(); i++) {
-				
-				ob.writeObject(pets);
-			}
-			ob.close();
-		}catch(IOException e) {
-			System.out.println("No se pudo leer");
-		}
-	}
-
 	
 }

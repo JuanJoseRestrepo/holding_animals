@@ -1,7 +1,9 @@
 package model;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Serializable;
@@ -20,7 +22,7 @@ public class Holding implements Serializable{
 		clubs = new ArrayList<Club>();
 	}
 	
-	public void findClubWithClubAndOwnerAndPet(long idClubs,long idClien,long idPet,String petName, String gender,String typeOfPet,String bornPetDay){
+	public void findClubWithClubAndOwnerAndPet(String idClubs,String idClien,String idPet,String petName, String gender,String typeOfPet,String bornPetDay){
 		for(int i = 0; i < clubs.size();i++) {
 			if(idClubs == clubs.get(i).getIdClub()) {
 				clubs.get(i).searchForTheOwner(idClubs,idPet, petName, gender, typeOfPet, bornPetDay);
@@ -28,7 +30,7 @@ public class Holding implements Serializable{
 		}
 	}
 	
-	public String findClubForOwner(long idClub, long idOwner,String ownerNames, String ownerSecondNames,String typeOfAnimalsPrefer,String bornDay) {
+	public String findClubForOwner(String idClub, String idOwner,String ownerNames, String ownerSecondNames,String typeOfAnimalsPrefer,String bornDay) {
 		String msj = "";
 		
 		for (int i = 0; i < clubs.size(); i++) {
@@ -42,14 +44,14 @@ public class Holding implements Serializable{
 		return msj;
 	}
 	
-	public void registerClubInTheSystem(long idClub,String nameClub,String creationDate,String typeOfAnimals) {
+	public void registerClubInTheSystem(String idClub,String nameClub,String creationDate,String typeOfAnimals) {
 		
 		clubs.add(new Club(idClub,nameClub,creationDate,typeOfAnimals));
 	
 }
 	
 	public void saveClub() {
-		File fl = new File("clubesList.txt");
+		File fl = new File("Documents\\holding_animals\\archivos\\clubesList.txt");
 		
 		try {
 			FileWriter fw = new FileWriter(fl);
@@ -66,6 +68,38 @@ public class Holding implements Serializable{
 		}catch(IOException e) {
 			System.out.println("Problema de esritura en el archivo");
 		}
+		
+		
+	}
+	
+	public void loadFileMocaForClub() {
+		
+		File fl = new File("Documents\\holding_animals\\archivos\\");
+		
+		try {
+		FileReader fr = new FileReader(fl);
+		BufferedReader br = new BufferedReader(fr);
+		String a = br.readLine();
+		
+		while(a  != null){
+			
+			String[] b = a.split(",");
+			
+		}
+		br.close();
+		
+		}catch(IOException e) {
+			
+		}
+		
+		
+		
+	}
+	
+	public void createObjectMocaroForClub() {
+		
+		
+		
 		
 		
 	}
