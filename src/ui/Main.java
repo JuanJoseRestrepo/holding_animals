@@ -12,7 +12,7 @@ public class Main {
 	
 	public Main() {
 		reader = new Scanner(System.in);
-		system = new Holding();
+		system = new Holding("Clubes.txt");
 	}
 	
 	public void showMenu(){
@@ -38,7 +38,7 @@ public class Main {
 			
 			if(inputUser == 1) {
 				System.out.println("Digite la identificacion del club");
-				long idClub = reader.nextLong();
+				String idClub =
 				reader.nextLine();
 				
 				System.out.println("Digite el nombre del club");
@@ -69,7 +69,7 @@ public class Main {
 			}else if(inputUser == 2) {
 				
 				System.out.println("Digite el id del Club que va agregar al dueño");
-				long idnameClub = reader.nextLong();
+				String idnameClub = 
 				reader.nextLine();
 				
 				System.out.println("Digite el id del dueño");

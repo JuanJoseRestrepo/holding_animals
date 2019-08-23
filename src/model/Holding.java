@@ -17,9 +17,11 @@ public class Holding implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	private ArrayList<Club> clubs;
+	private String archives;
 	
-	public Holding() {
-		clubs = new ArrayList<Club>();
+	public Holding(String archives) {
+		this.archives = archives;
+		clubs = loadFileMocaForClub();
 	}
 	
 	public void findClubWithClubAndOwnerAndPet(String idClubs,String idClien,String idPet,String petName, String gender,String typeOfPet,String bornPetDay){
@@ -72,9 +74,10 @@ public class Holding implements Serializable{
 		
 	}
 	
-	public void loadFileMocaForClub() {
+	public ArrayList<Club> loadFileMocaForClub() {
 		
-		File fl = new File("Documents\\holding_animals\\archivos\\");
+		ArrayList<Club> clubsitos = new ArrayList<Club>();
+		File fl = new File(archives);
 		
 		try {
 		FileReader fr = new FileReader(fl);
@@ -84,6 +87,7 @@ public class Holding implements Serializable{
 		while(a  != null){
 			
 			String[] b = a.split(",");
+			clubsitos.add(new Club(b[0], b[1], b[2], b[3]));
 			
 		}
 		br.close();
@@ -92,11 +96,10 @@ public class Holding implements Serializable{
 			
 		}
 		
-		
+		return clubsitos;
 		
 	}
 	
-	public void createObjectMocaroForClub() {
 		
 		
 		
@@ -106,4 +109,3 @@ public class Holding implements Serializable{
 	
 
 	
-}//Final de la clase
