@@ -1,7 +1,9 @@
 package model;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.*;
@@ -28,7 +30,7 @@ public class Club implements Serializable {
 		this.creationDate = creationDate;
 		this.typeOfAnimals = typeOfAnimals;
 		
-		owners = new ArrayList<Owner>();
+		owners = loadObjectsOwnerAndPets();
 	}
 	
 	public String getIdClub() {
@@ -105,6 +107,31 @@ public class Club implements Serializable {
 			System.out.println("No se pudo leer");
 		}
 	}
+	
+	public ArrayList<Owner> loadObjectsOwnerAndPets() {
+		File fl = new File("OwnerList.txt");
+		ArrayList<Owner> ownersitos = new ArrayList<Owner>();
+		
+		if(fl.isFile()) {
+		try {
+			FileInputStream fr = new FileInputStream(fl);
+			ObjectInputStream ob = new ObjectInputStream(fr);
+			
+			Owner owner = (Owner) ob.readObject();
+			ownersitos.add(owner);
+			ob.close();
+		}catch(IOException e) {
+			
+			e.getCause();
+			
+		}catch(ClassNotFoundException e) {
+			
+			e.getCause();
+			
+		}
+	}
+		return ownersitos;
+}
 	
 	public void searchForTheOwner(String idClient, String idPet,String petName, String gender,String typeOfPet,String bornPetDay) {
 		

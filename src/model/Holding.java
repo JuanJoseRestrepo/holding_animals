@@ -53,7 +53,7 @@ public class Holding implements Serializable{
 }
 	
 	public void saveClub() {
-		File fl = new File("Documents\\holding_animals\\archivos\\clubesList.txt");
+		File fl = new File("clubesList.txt");
 		
 		try {
 			FileWriter fw = new FileWriter(fl);
@@ -109,3 +109,4 @@ public class Holding implements Serializable{
 	
 
 	
+
