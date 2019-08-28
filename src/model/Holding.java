@@ -103,10 +103,9 @@ public class Holding implements Serializable{
 		
 		for(int i = 0; i < clubs.size();i++) {
 			if(clubs.get(i).getIdClub().equals(idClubsi)) {
-
+				clubs.get(i).delatedOwner(nombreOwner,apellidoParaco);
 			}	
-		}	
-		
+		}		
 	}
 	
 	public ArrayList<Club> loadFileMocaForClub() {
