@@ -117,6 +117,16 @@ public class Holding implements Serializable{
 		}		
 	}
 	
+	public void delatedWithClubWithOwner(String idClubsi, String idOwner,String namePet) {
+		
+		for(int i = 0; i < clubs.size();i++) {
+			if(clubs.get(i).getIdClub().equals(idClubsi)) {
+				
+			}
+		}
+		
+	}
+	
 	public ArrayList<Club> loadFileMocaForClub() {
 		
 		ArrayList<Club> clubsitos = new ArrayList<Club>();
