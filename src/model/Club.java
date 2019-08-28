@@ -211,5 +211,17 @@ public class Club implements Serializable {
 		
 	}
 	
+	public void delatedOwnerNumber(String idDelMka) {
+		
+		for(int i = 0; i < owners.size();i++) {
+			
+			if(owners.get(i).getIdOwner().equals(idDelMka)){
+				owners.remove(i);
+			}
+			
+		}
+		
+	}
+	
 	
 }//finalDeLaClase
