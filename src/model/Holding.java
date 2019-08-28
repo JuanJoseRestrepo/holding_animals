@@ -74,6 +74,41 @@ public class Holding implements Serializable{
 		
 	}
 	
+	public void delatedClubWithNumber(String id) {
+		
+		boolean t = false;
+		
+		for(int i = 0; i < clubs.size() && !t;i++) {
+			if(clubs.get(i).getIdClub().equals(id)) {
+				clubs.remove(i);
+				t = true;
+			}	
+		}	
+	}
+	
+	
+	public void delatedClubWithName(String name) {
+		
+		boolean t = false;
+		
+		for(int i = 0; i < clubs.size() && !t;i++) {
+			if(clubs.get(i).getNameClub().equals(name)) {
+				clubs.remove(i);
+				t = true;
+			}	
+		}	
+	}
+	
+	public void delatedWithClubOwner(String idClubsi, String nombreOwner,String apellidoParaco) {
+		
+		for(int i = 0; i < clubs.size();i++) {
+			if(clubs.get(i).getIdClub().equals(idClubsi)) {
+
+			}	
+		}	
+		
+	}
+	
 	public ArrayList<Club> loadFileMocaForClub() {
 		
 		ArrayList<Club> clubsitos = new ArrayList<Club>();

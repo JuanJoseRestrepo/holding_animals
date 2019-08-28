@@ -1,8 +1,13 @@
 package model;
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.ObjectInput;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
@@ -139,6 +144,67 @@ public class Club implements Serializable {
 			if(idClient == owners.get(i).getIdOwner()) {
 				owners.get(i).addAnimals(idPet, petName, gender, typeOfPet, bornPetDay);
 				saveObjectsInFileOwners();
+			}
+			
+		}
+		
+	}
+	
+	public ArrayList<Owner> loadOwnerWithPets(){
+		
+		ArrayList<Owner> ownersitos = new ArrayList<Owner>();
+		File fl = new File("");
+		
+		try {
+		FileReader fi = new FileReader(fl);
+		BufferedReader br = new BufferedReader(fi);
+		String br1 = br.readLine();
+		
+		while(br1 != null) {
+			
+			String[] b = br1.split(",");
+			
+			boolean salir = false;
+			
+			for(int i = 0; i < b.length && !salir;i++) {
+				
+				if(b[0] != owners.get(i).getIdOwner()) {
+					
+					if(b[7] != owners.get(i).getPets().get(i).getPetName()) {
+						
+						ownersitos.add(new Owner(b[0],b[1],b[2],b[3],b[4]));
+						
+						salir = true;
+						
+					}
+					
+				}
+				
+			}
+		}
+		br.close();
+		
+		} catch (FileNotFoundException e) {
+	
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		return ownersitos;
+		
+		
+		
+	}
+	
+	public void delatedOwner(String nombredelMka,String apellidoOwner) {
+		
+		for(int i = 0; i < owners.size();i++) {
+			
+			if((owners.get(i).getOwnerNames().equals(nombredelMka)) && (owners.get(i).getOwnerSecondNames().equals(apellidoOwner))){
+				owners.remove(i);
 			}
 			
 		}
