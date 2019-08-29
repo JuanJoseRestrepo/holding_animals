@@ -150,7 +150,7 @@ public class Club implements Serializable {
 		
 	}
 	
-	public ArrayList<Owner> loadOwnerWithPets(){
+	public ArrayList<Owner> loadOwner(){
 		
 		ArrayList<Owner> ownersitos = new ArrayList<Owner>();
 		File fl = new File("");
@@ -158,29 +158,15 @@ public class Club implements Serializable {
 		try {
 		FileReader fi = new FileReader(fl);
 		BufferedReader br = new BufferedReader(fi);
-		String br1 = br.readLine();
 		
-		while(br1 != null) {
+		
+		while(br.readLine() != null) {
+			
+			String br1 = br.readLine();
 			
 			String[] b = br1.split(",");
+			ownersitos.add(new Owner(b[0],b[1],b[2],b[3],b[4]));
 			
-			boolean salir = false;
-			
-			for(int i = 0; i < b.length && !salir;i++) {
-				
-				if(b[0] != owners.get(i).getIdOwner()) {
-					
-					if(b[7] != owners.get(i).getPets().get(i).getPetName()) {
-						
-						ownersitos.add(new Owner(b[0],b[1],b[2],b[3],b[4]));
-						
-						salir = true;
-						
-					}
-					
-				}
-				
-			}
 		}
 		br.close();
 		

@@ -51,7 +51,7 @@ public class Holding implements Serializable{
 		clubs.add(new Club(idClub,nameClub,creationDate,typeOfAnimals));
 	
 }
-	
+		
 	public void saveClub() {
 		File fl = new File("clubesList.txt");
 		
@@ -62,6 +62,7 @@ public class Holding implements Serializable{
 			for(int i = 0; i < clubs.size();i++) {
 				bfw.write(clubs.get(i).getIdClub() + "  " + clubs.get(i).getNameClub()
 				+ " " + clubs.get(i).getCreationDate() + " " + clubs.get(i).getTypeOfAnimals());
+				
 				
 			}
 			bfw.close();
@@ -135,9 +136,11 @@ public class Holding implements Serializable{
 		try {
 		FileReader fr = new FileReader(fl);
 		BufferedReader br = new BufferedReader(fr);
-		String a = br.readLine();
 		
-		while(a  != null){
+		
+		while(br.readLine() != null){
+			
+			String a = br.readLine();
 			
 			String[] b = a.split(",");
 			clubsitos.add(new Club(b[0], b[1], b[2], b[3]));
@@ -146,7 +149,7 @@ public class Holding implements Serializable{
 		br.close();
 		
 		}catch(IOException e) {
-			
+			e.getCause();
 		}
 		
 		return clubsitos;
