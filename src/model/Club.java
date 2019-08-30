@@ -96,10 +96,10 @@ public class Club implements Serializable {
 	}
 	
 	public void saveObjectsInFileOwners() {
-		File fl = new File("Documents\\holding_animals\\archivos\\Owners.txt");
+		File fl = new File("Owners.txt");
 		
 		try {
-			FileOutputStream file = new FileOutputStream(fl);
+			FileOutputStream file = new FileOutputStream(fl.getAbsoluteFile());
 			ObjectOutputStream ob = new ObjectOutputStream(file);
 			
 			for (int i = 0; i < owners.size(); i++) {
@@ -119,7 +119,7 @@ public class Club implements Serializable {
 		
 		if(fl.isFile()) {
 		try {
-			FileInputStream fr = new FileInputStream(fl);
+			FileInputStream fr = new FileInputStream(fl.getAbsoluteFile());
 			ObjectInputStream ob = new ObjectInputStream(fr);
 			
 			Owner owner = (Owner) ob.readObject();
@@ -156,7 +156,7 @@ public class Club implements Serializable {
 		File fl = new File("");
 		
 		try {
-		FileReader fi = new FileReader(fl);
+		FileReader fi = new FileReader(fl.getAbsoluteFile());
 		BufferedReader br = new BufferedReader(fi);
 		
 		
@@ -219,6 +219,12 @@ public class Club implements Serializable {
 			
 		}
 		
+	}
+	
+	public String toString() {
+		String msj = "";
+		
+		return msj;
 	}
 	
 	

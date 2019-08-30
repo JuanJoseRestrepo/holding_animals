@@ -56,14 +56,13 @@ public class Holding implements Serializable{
 		File fl = new File("clubesList.txt");
 		
 		try {
-			FileWriter fw = new FileWriter(fl);
+			FileWriter fw = new FileWriter(fl.getAbsoluteFile(),true);
 			BufferedWriter bfw = new BufferedWriter(fw);
 			
 			for(int i = 0; i < clubs.size();i++) {
+				bfw.newLine();	
 				bfw.write(clubs.get(i).getIdClub() + "  " + clubs.get(i).getNameClub()
 				+ " " + clubs.get(i).getCreationDate() + " " + clubs.get(i).getTypeOfAnimals());
-				
-				
 			}
 			bfw.close();
 			
@@ -157,7 +156,11 @@ public class Holding implements Serializable{
 	}
 	
 		
+	public String toString() {
+		String msj = "";
 		
+		return msj;
+	}
 		
 		
 		

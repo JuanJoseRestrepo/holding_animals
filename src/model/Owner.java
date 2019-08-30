@@ -86,13 +86,13 @@ public class Owner {
 		}
 	}
 	
-public ArrayList<Pet> loadOwner(){
+public ArrayList<Pet> loadPet(){
 		
-		ArrayList<Pet> ownersitos = new ArrayList<Pet>();
+		ArrayList<Pet> pets = new ArrayList<Pet>();
 		File fl = new File("");
 		
 		try {
-		FileReader fi = new FileReader(fl);
+		FileReader fi = new FileReader(fl.getAbsoluteFile());
 		BufferedReader br = new BufferedReader(fi);
 		
 		
@@ -101,12 +101,14 @@ public ArrayList<Pet> loadOwner(){
 			String br1 = br.readLine();
 			
 			String[] b = br1.split(",");
-			ownersitos.add(new Pet(b[0],b[1],b[2],b[3],b[4]));
+			pets.add(new Pet(b[0],b[1],b[2],b[3],b[4]));
 			
 		}
 		br.close();
 		
 		} catch (FileNotFoundException e) {
+			
+			e.getCause();
 	
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -115,29 +117,18 @@ public ArrayList<Pet> loadOwner(){
 		
 		
 		
-		return ownersitos;
+		return pets;
 		
 		
 		
 	}
 
-public void readPetInTheText() {
+	public String toString() {
+	String msj = "";
 	
-	File fl = new File("");
-	
-	try {
-		FileReader fr = new FileReader(fl);
-		BufferedReader br = new BufferedReader(fr);
-		
-		
-	} catch (FileNotFoundException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
+	return msj;
 	}
-	
-	
-	
-}
+
 	
 	
 }

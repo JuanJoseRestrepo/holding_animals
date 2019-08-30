@@ -58,4 +58,10 @@ public class Pet {
 		this.bornPetDay = bornPetDay;
 	}
 	
+	public String toString() {
+		String msj = "";
+		
+		return msj;
+	}
+	
 }//Final de la clase pe
