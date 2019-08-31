@@ -13,7 +13,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.*;
 
-public class Club implements Serializable {
+public class Club implements Serializable, Comparable<Club>,Comparator<Club> {
 
 	/**
 	 * 
@@ -28,7 +28,11 @@ public class Club implements Serializable {
 	private String nameClub;
 	private String creationDate;
 	private String typeOfAnimals;
+	private ordenarPorFecha fechas;
 	
+	/**
+	 * 
+	 */
 	public Club(String idClub,String nameClub,String creationDate,String typeOfAnimals) {
 		this.idClub = idClub;
 		this.nameClub = nameClub;
@@ -38,46 +42,79 @@ public class Club implements Serializable {
 		owners = loadObjectsOwnerAndPets();
 	}
 	
+	/**
+	 * 
+	 */
 	public String getIdClub() {
 		return idClub;
 	}
 	
+	/**
+	 * 
+	 */
 	public void setIdClub(String idClub) {
 		this.idClub = idClub;
 	}
 	
+	/**
+	 * 
+	 */
 	public String getNameClub() {
 		return nameClub;
 	}
 	
+	/**
+	 * 
+	 */
 	public void setNameClub(String nameClub) {
 		this.nameClub = nameClub;
 	}
 	
+	/**
+	 * 
+	 */
 	public String getCreationDate() {
 		return creationDate;
 	}
 	
+	/**
+	 * 
+	 */
 	public void setCreationDate(String creationDate) {
 		this.creationDate = creationDate;
 	}
 	
+	/**
+	 * 
+	 */
 	public String getTypeOfAnimals() {
 		return typeOfAnimals;
 	}
 	
+	/**
+	 * 
+	 */
 	public void setTypeOfAnimals(String typeOfAnimals) {
 		this.typeOfAnimals = typeOfAnimals;
 	}
 	
+	/**
+	 * 
+	 */
 	public ArrayList<Owner> getOwners(){
 		return owners;
 	}
 	
+	/**
+	 * 
+	 */
 	public void setOwners(ArrayList<Owner> owners) {
 		this.owners = owners;
 	}
 	
+	/**
+	 * 
+	 */
 	public String addOwners(String idOwner, String ownerNames, String ownerSecondNames,String typeOfAnimalsPrefer,String bornDay) {
 		String msj = " ";
 		
@@ -95,6 +132,9 @@ public class Club implements Serializable {
 		return msj;
 	}
 	
+	/**
+	 * 
+	 */
 	public void saveObjectsInFileOwners() {
 		File fl = new File("Owners.txt");
 		
@@ -113,6 +153,9 @@ public class Club implements Serializable {
 		}
 	}
 	
+	/**
+	 * 
+	 */
 	public ArrayList<Owner> loadObjectsOwnerAndPets() {
 		File fl = new File("OwnerList.txt");
 		ArrayList<Owner> ownersitos = new ArrayList<Owner>();
@@ -138,6 +181,9 @@ public class Club implements Serializable {
 		return ownersitos;
 }
 	
+	/**
+	 * 
+	 */
 	public void searchForTheOwner(String idClient, String idPet,String petName, String gender,String typeOfPet,String bornPetDay) {
 		
 		for (int i = 0; i < owners.size(); i++) {
@@ -150,6 +196,9 @@ public class Club implements Serializable {
 		
 	}
 	
+	/**
+	 * 
+	 */
 	public ArrayList<Owner> loadOwner(){
 		
 		ArrayList<Owner> ownersitos = new ArrayList<Owner>();
@@ -185,6 +234,9 @@ public class Club implements Serializable {
 		
 	}
 	
+	/**
+	 * 
+	 */
 	public void delatedOwner(String nombredelMka,String apellidoOwner) {
 		
 		for(int i = 0; i < owners.size();i++) {
@@ -197,6 +249,9 @@ public class Club implements Serializable {
 		
 	}
 	
+	/**
+	 * 
+	 */
 	public void delatedOwnerNumber(String idDelMka) {
 		
 		for(int i = 0; i < owners.size();i++) {
@@ -209,6 +264,9 @@ public class Club implements Serializable {
 		
 	}
 	
+	/**
+	 * 
+	 */
 	public void delatedPetWithName(String idOwner,String namePet){
 		
 		for(int i = 0; i < owners.size();i++) {
@@ -221,10 +279,43 @@ public class Club implements Serializable {
 		
 	}
 	
+	/**
+	 * 
+	 */
 	public String toString() {
 		String msj = "";
 		
+		msj+= "El id es: " + " " + idClub + " ";
+		msj+= "El nombre del club es: " + " " + nameClub+ " ";
+		msj+= "La fecha de creacion es: " + " " + creationDate+ " ";
+		msj+= "El tipo de animal preferido es: " + " " + typeOfAnimals+ " ";
+		
+		
+		
 		return msj;
+	}
+
+	
+	/**
+	 * 
+	 */
+	@Override
+	public int compareTo(Club club) {
+		
+		return idClub.compareTo(club.getIdClub());
+		
+	}
+
+	@Override
+	public int compare(Club o1, Club o2) {
+		
+		return o1.getNameClub().compareTo(o2.getNameClub());
+	}
+	
+	public int compareOrdenarPorFecha(Club o1, Club o2) {
+		
+		return o1.getCreationDate().compareTo(o2.getCreationDate());
+		
 	}
 	
 	

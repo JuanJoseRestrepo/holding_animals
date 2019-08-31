@@ -12,7 +12,7 @@ public class Main {
 	
 	public Main() {
 		reader = new Scanner(System.in);
-		system = new Holding("Clubes.txt");
+		system = new Holding("Clubes.csv");
 	}
 	
 	public void showMenu(){
@@ -31,7 +31,7 @@ public class Main {
 		System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
 
 		
-		while(inputUser != 7) {
+		while(inputUser != 8) {
 			try {
 			inputUser = reader.nextInt();
 			reader.nextLine();
@@ -107,6 +107,61 @@ public class Main {
 			}else if(inputUser == 5) {
 				
 			}else if(inputUser == 6) {
+				
+			}else if(inputUser == 7) {
+				int userNumber = 0;
+				
+				
+					
+					System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+					System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+					System.out.println("1.Mostrar club ordenados");
+					System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+					System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+
+					while(userNumber != 4) {
+						
+						try {
+						userNumber = reader.nextInt();
+						reader.nextLine(); 
+						
+						if(userNumber == 1) {
+							
+							system.ordenarClubes();
+							System.out.println(system.mostrarInfoOrdenado());
+							
+						}else if(userNumber == 2) {
+							
+							system.ordenarClubesPorNombre();
+							System.out.println(system.mostrarInfoOrdenado());
+							
+						}else if(userNumber == 3) {
+							
+							system.ordenarFechas();
+							System.out.println(system.mostrarInfoOrdenado());
+							
+						}else {
+							
+							System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+							System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+							System.out.println("1.Crear club");
+							System.out.println("2.Crear dueño");
+							System.out.println("3.Crear mascota");
+							System.out.println("4.Eliminas el clubsito");
+							System.out.println("5.Eliminar al dueño :O");
+							System.out.println("6.Eliminar a la mascota");
+							System.out.println("7.Salir del programa");
+							System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+							System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+	
+						}
+						
+					}catch(InputMismatchException e) {
+						e.getCause();
+					}
+						
+					}
+					
 				
 			}else {
 				System.out.println("Vuelva pronto!!!");

@@ -53,16 +53,17 @@ public class Holding implements Serializable{
 }
 		
 	public void saveClub() {
-		File fl = new File("clubesList.txt");
+		File fl = new File(archives);
 		
 		try {
-			FileWriter fw = new FileWriter(fl.getAbsoluteFile(),true);
+			FileWriter fw = new FileWriter(fl.getAbsoluteFile());
 			BufferedWriter bfw = new BufferedWriter(fw);
 			
 			for(int i = 0; i < clubs.size();i++) {
+	
+				bfw.write(clubs.get(i).getIdClub() + "," + clubs.get(i).getNameClub()
+				+ "," + clubs.get(i).getCreationDate() + "," + clubs.get(i).getTypeOfAnimals());
 				bfw.newLine();	
-				bfw.write(clubs.get(i).getIdClub() + "  " + clubs.get(i).getNameClub()
-				+ " " + clubs.get(i).getCreationDate() + " " + clubs.get(i).getTypeOfAnimals());
 			}
 			bfw.close();
 			
@@ -136,11 +137,8 @@ public class Holding implements Serializable{
 		FileReader fr = new FileReader(fl);
 		BufferedReader br = new BufferedReader(fr);
 		
-		
-		while(br.readLine() != null){
-			
-			String a = br.readLine();
-			
+		String a;
+		while((a =br.readLine()) != null){
 			String[] b = a.split(",");
 			clubsitos.add(new Club(b[0], b[1], b[2], b[3]));
 			
@@ -160,6 +158,80 @@ public class Holding implements Serializable{
 		String msj = "";
 		
 		return msj;
+	}
+		
+	
+	
+	public void ordenarClubes() {
+		
+		
+		for(int i = 1; i < clubs.size();i++) {
+			
+			for(int j = i; j > 0 && clubs.get(j-1).compareTo(clubs.get(j)) > 0; j--) {
+				Club temp = clubs.get(j);
+				clubs.set(j,clubs.get(j-1));
+				clubs.set(j-1,temp);
+			}
+				
+		}
+		
+	}
+	
+	public void ordenarClubesPorNombre() {
+		
+		for (int i = 0; i < clubs.size(); i++) {
+			Club menor = clubs.get(i);
+			int posicion = i;
+			
+			for(int j = i + 1; j < clubs.size();j++) {
+				
+				if(clubs.get(j).compare(menor,clubs.get(j)) > 0) {
+					
+					menor = clubs.get(j);
+					posicion = j;
+					
+				}
+				
+				
+			}
+			
+			Club temp = clubs.get(i);
+			clubs.set(i,menor);
+			clubs.set(posicion,temp);
+			
+		}
+		
+		
+	}
+	
+	public String mostrarInfoOrdenado() {
+		String msj = "";
+		
+		for(int i = 0; i < clubs.size();i++) {
+			msj+= "\n " + clubs.get(i).toString();
+		}
+		
+		return msj;
+	}
+	
+	public void ordenarFechas() {
+		
+		for(int i = 0; i < clubs.size();i++) {
+			
+			for(int j = 0; j < clubs.size() -1;j++) {
+				
+				if(clubs.get(j).compareOrdenarPorFecha(clubs.get(j),clubs.get(j+1)) > 0) {
+					Club temp = clubs.get(j);
+					clubs.set(j, clubs.get(j+1));
+					clubs.set(j+1, temp);
+					
+				}
+				
+				
+			}
+			
+		}
+		
 	}
 		
 		
