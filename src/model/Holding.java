@@ -3,6 +3,7 @@ package model;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -233,6 +234,100 @@ public class Holding implements Serializable{
 		}
 		
 	}
+	
+public void loadPet(){
+		int x = (int) (Math.random() *9);
+	
+	
+		ArrayList<Pet> pets = new ArrayList<Pet>();
+		File fl = new File("");
+		
+		try {
+		FileReader fi = new FileReader(fl.getAbsoluteFile());
+		BufferedReader br = new BufferedReader(fi);
+		
+		
+		while(br.readLine() != null) {
+			
+			String br1 = br.readLine();
+			
+			String[] b = br1.split(",");
+			pets.add(new Pet(b[0],b[1],b[2],b[3],b[4]));
+			
+		}
+		br.close();
+		
+		} catch (FileNotFoundException e) {
+			
+			e.getCause();
+	
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		int j = 0;
+		
+		for(Club miClub:clubs){
+			for(Owner owner: miClub.getOwners()) {
+				
+		
+				
+				for(int i = 0; i < x;i++) {
+					
+					owner.addAnimals(pets(j));
+					j++;
+				}
+				
+				
+			}
+		}
+			
+	}
+
+public void loadOwner(){
+	
+	int x = 0;
+	ArrayList<Owner> ownersitos = new ArrayList<Owner>();
+	File fl = new File("");
+	
+	try {
+	FileReader fi = new FileReader(fl.getAbsoluteFile());
+	BufferedReader br = new BufferedReader(fi);
+	
+	
+	while(br.readLine() != null) {
+		
+		String br1 = br.readLine();
+		
+		String[] b = br1.split(",");
+		ownersitos.add(new Owner(b[0],b[1],b[2],b[3],b[4]));
+		
+	}
+	br.close();
+	
+	} catch (FileNotFoundException e) {
+
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	int j = 0;
+	
+	for(Club miClub:clubs){
+		
+		for(int k = 0; k < x;k++) {
+			miClub.addOwners(ownersitos.get(j));
+		}
+		
+	}
+	
+	
+	
+	
+}
+
 		
 		
 		

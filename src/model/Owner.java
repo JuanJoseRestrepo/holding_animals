@@ -86,42 +86,6 @@ public class Owner {
 		}
 	}
 	
-public ArrayList<Pet> loadPet(){
-		
-		ArrayList<Pet> pets = new ArrayList<Pet>();
-		File fl = new File("");
-		
-		try {
-		FileReader fi = new FileReader(fl.getAbsoluteFile());
-		BufferedReader br = new BufferedReader(fi);
-		
-		
-		while(br.readLine() != null) {
-			
-			String br1 = br.readLine();
-			
-			String[] b = br1.split(",");
-			pets.add(new Pet(b[0],b[1],b[2],b[3],b[4]));
-			
-		}
-		br.close();
-		
-		} catch (FileNotFoundException e) {
-			
-			e.getCause();
-	
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-		
-		return pets;
-		
-		
-		
-	}
 
 	public String toString() {
 	String msj = "";
