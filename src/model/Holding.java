@@ -22,6 +22,8 @@ public class Holding implements Serializable{
 	public Holding(String archives) {
 		this.archives = archives;
 		clubs = loadFileMocaForClub();
+		loadOwner();
+		loadPet();
 	}
 	
 	public void findClubWithClubAndOwnerAndPet(String idClubs,String idClien,String idPet,String petName, String gender,String typeOfPet,String bornPetDay){
@@ -162,7 +164,7 @@ public class Holding implements Serializable{
 		
 	
 	
-	public void ordenarClubes() {
+	public void ordenarClubesPorId() {
 		
 		
 		for(int i = 1; i < clubs.size();i++) {
@@ -271,7 +273,7 @@ public void loadPet(){
 
 public void loadOwner(){
 	
-	int x = 0;
+	
 	ArrayList<Owner> ownersitos = new ArrayList<Owner>();
 	File fl = new File("");
 	
@@ -293,8 +295,9 @@ public void loadOwner(){
 	}
 	int j = 0;
 	for(Club miClub:clubs){
-		for(int k = 0; k < x;k++) {
+		for(int k = 0; k < 10000;k++) {
 			miClub.addOwners(ownersitos.get(j).getIdOwner(),ownersitos.get(j).getOwnerNames(),ownersitos.get(j).getOwnerSecondNames(),ownersitos.get(j).getTypeOfAnimalsPrefer(),ownersitos.get(j).getBornDay());
+			j++;
 		}	
 	}
 }
@@ -311,7 +314,52 @@ public void ordenateTypeOfAnimals() {
 	}	
 }
 
-		
+public void getMethodsSortWithTypeOfAnimals(String idClub) {
+	
+	for (int i = 0; i < clubs.size(); i++) {
+		if(clubs.get(i).getIdClub().equals(idClub)) {
+			ordenateTypeOfAnimals();
+		}
+	}
+	
+}
+
+public String getMethodsSortWithCode(String idClub) {
+	String msj = "";
+	for (int i = 0; i < clubs.size(); i++) {
+		if(clubs.get(i).getIdClub().equals(idClub)) {
+			msj = "Se encontro";
+			ordenarClubesPorId();
+		}else {
+			try {
+				
+			}catch() {
+				
+			}
+		}
+	}
+	
+	return msj;
+}
+
+
+public void getMethodsSortWithName(String idClub) {
+	
+	for (int i = 0; i < clubs.size(); i++) {
+		if(clubs.get(i).getIdClub().equals(idClub)) {
+			ordenarClubesPorNombre();
+		}
+	}
+}
+
+public void getMethodsSortWithDates(String idClub) {
+	
+	for (int i = 0; i < clubs.size(); i++) {
+		if(clubs.get(i).getIdClub().equals(idClub)) {
+			ordenarFechas();
+		}
+	}
+}
 		
 		
 }//Final

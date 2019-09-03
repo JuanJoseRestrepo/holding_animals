@@ -119,7 +119,7 @@ public class Main {
 					System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
 					System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
 
-					while(userNumber != 4) {
+					while(userNumber != 5) {
 						
 						try {
 						userNumber = reader.nextInt();
@@ -127,7 +127,10 @@ public class Main {
 						
 						if(userNumber == 1) {
 							
-							system.ordenarClubes();
+							System.out.println("Digite el id del club");
+							
+							
+							system.ordenarClubesPorId();
 							System.out.println(system.mostrarInfoOrdenado());
 							
 						}else if(userNumber == 2) {
@@ -140,7 +143,9 @@ public class Main {
 							system.ordenarFechas();
 							System.out.println(system.mostrarInfoOrdenado());
 							
-						}else {
+						}else if(userNumber == 4){
+						
+						}else{
 							
 							System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
 							System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
