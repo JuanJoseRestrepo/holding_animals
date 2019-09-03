@@ -19,7 +19,6 @@ public class Holding implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private ArrayList<Club> clubs;
 	private String archives;
-	
 	public Holding(String archives) {
 		this.archives = archives;
 		clubs = loadFileMocaForClub();
@@ -224,11 +223,8 @@ public class Holding implements Serializable{
 				if(clubs.get(j).compareOrdenarPorFecha(clubs.get(j),clubs.get(j+1)) > 0) {
 					Club temp = clubs.get(j);
 					clubs.set(j, clubs.get(j+1));
-					clubs.set(j+1, temp);
-					
+					clubs.set(j+1, temp);	
 				}
-				
-				
 			}
 			
 		}
@@ -237,23 +233,16 @@ public class Holding implements Serializable{
 	
 public void loadPet(){
 		int x = (int) (Math.random() *9);
-	
-	
 		ArrayList<Pet> pets = new ArrayList<Pet>();
 		File fl = new File("");
 		
 		try {
 		FileReader fi = new FileReader(fl.getAbsoluteFile());
 		BufferedReader br = new BufferedReader(fi);
-		
-		
 		while(br.readLine() != null) {
-			
 			String br1 = br.readLine();
-			
 			String[] b = br1.split(",");
 			pets.add(new Pet(b[0],b[1],b[2],b[3],b[4]));
-			
 		}
 		br.close();
 		
@@ -270,15 +259,10 @@ public void loadPet(){
 		
 		for(Club miClub:clubs){
 			for(Owner owner: miClub.getOwners()) {
-				
-		
-				
 				for(int i = 0; i < x;i++) {
-					
-					owner.addAnimals(pets(j));
+					owner.addAnimals(pets.get(j).getIdPet(),pets.get(j).getPetName(),pets.get(j).getGender(),pets.get(j).getTypeOfPet(),pets.get(j).getBornPetDay());
 					j++;
 				}
-				
 				
 			}
 		}
@@ -294,15 +278,10 @@ public void loadOwner(){
 	try {
 	FileReader fi = new FileReader(fl.getAbsoluteFile());
 	BufferedReader br = new BufferedReader(fi);
-	
-	
-	while(br.readLine() != null) {
-		
+	while(br.readLine() != null) {	
 		String br1 = br.readLine();
-		
 		String[] b = br1.split(",");
 		ownersitos.add(new Owner(b[0],b[1],b[2],b[3],b[4]));
-		
 	}
 	br.close();
 	
@@ -312,26 +291,30 @@ public void loadOwner(){
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-	
 	int j = 0;
-	
 	for(Club miClub:clubs){
-		
 		for(int k = 0; k < x;k++) {
-			miClub.addOwners(ownersitos.get(j));
-		}
-		
+			miClub.addOwners(ownersitos.get(j).getIdOwner(),ownersitos.get(j).getOwnerNames(),ownersitos.get(j).getOwnerSecondNames(),ownersitos.get(j).getTypeOfAnimalsPrefer(),ownersitos.get(j).getBornDay());
+		}	
 	}
-	
-	
-	
-	
+}
+
+public void ordenateTypeOfAnimals() {
+	for(int i = 0; i < clubs.size();i++) {
+		for(int j = 0; j < clubs.size()-1-i;j++){
+			if(clubs.get(j).compareTypeOfAnimals(clubs.get(j+1))> 0) {
+				Club temp = clubs.get(j);
+				clubs.set(j,clubs.get(j+1));
+				clubs.set(j+1,temp);
+			}	
+		}	
+	}	
 }
 
 		
 		
 		
-	}
+}//Final
 	
 
 	

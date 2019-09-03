@@ -318,5 +318,10 @@ public class Club implements Serializable, Comparable<Club>,Comparator<Club> {
 		
 	}
 	
+	public int compareTypeOfAnimals(Club o1) {
+		
+		return typeOfAnimals.compareTo(o1.getTypeOfAnimals());
+	}
+	
 	
 }//finalDeLaClase
