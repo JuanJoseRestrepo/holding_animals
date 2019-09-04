@@ -234,7 +234,7 @@ public class Holding implements Serializable{
 	}
 	
 public void loadPet(){
-		int x = (int) (Math.random() *9);
+		int x = (int) ((Math.random() *9) + 1);
 		ArrayList<Pet> pets = new ArrayList<Pet>();
 		File fl = new File("");
 		
