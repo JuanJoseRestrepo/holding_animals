@@ -236,7 +236,7 @@ public class Holding implements Serializable{
 public void loadPet(){
 		int x = (int) ((Math.random() *9) + 1);
 		ArrayList<Pet> pets = new ArrayList<Pet>();
-		File fl = new File("");
+		File fl = new File("Pets.csv");
 		
 		try {
 		FileReader fi = new FileReader(fl.getAbsoluteFile());
