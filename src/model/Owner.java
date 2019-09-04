@@ -6,6 +6,8 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Owner implements Comparable<Owner>,Comparator<Owner>  {
@@ -119,8 +121,23 @@ public class Owner implements Comparable<Owner>,Comparator<Owner>  {
 	
 	public int compareToBornDay(Owner o1) {
 		
-		return 0;
+		return formatTheDateOfThis(bornDay).compareTo(formatTheDateOfThis(o1.getBornDay()));
 		
+	}
+	
+	
+	public Date formatTheDateOfThis(String dateOfThis) {
+		Date inicialDate = null;
+		SimpleDateFormat dateOfThis1 = new SimpleDateFormat("yyyy-MM-dd");
+		
+		try {
+			inicialDate = dateOfThis1.parse(dateOfThis);
+		}catch(ParseException e) {
+			e.getCause();
+		}
+		
+		
+		return inicialDate;
 	}
 
 	
