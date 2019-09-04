@@ -1,6 +1,8 @@
 package model;
 
-public class Pet {
+import java.util.Comparator;
+
+public class Pet implements Comparable<Pet>,Comparator<Pet>  {
 
 	private String idPet;
 	private String petName;
@@ -62,6 +64,19 @@ public class Pet {
 		String msj = "";
 		
 		return msj;
+	}
+
+	@Override
+	public int compare(Pet o1, Pet o2) {
+	
+		
+		return 0;
+	}
+
+	@Override
+	public int compareTo(Pet o) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 }//Final de la clase pe

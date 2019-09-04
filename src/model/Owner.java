@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.*;
 
-public class Owner {
+public class Owner implements Comparable<Owner>,Comparator<Owner>  {
 
 	private ArrayList<Pet> pets;
 	
@@ -91,6 +91,36 @@ public class Owner {
 	String msj = "";
 	
 	return msj;
+	}
+
+	@Override
+	public int compare(Owner o1, Owner o2) {
+		// TODO Auto-generated method stub
+		return o1.getOwnerNames().compareTo(o2.getOwnerNames());
+	}
+
+	@Override
+	public int compareTo(Owner o1) {
+		// TODO Auto-generated method stub
+		return idOwner.compareTo(o1.getIdOwner()) ;
+	}
+	
+	public int compareToSecondNames(Owner o1, Owner o2) {
+		
+		return o1.getOwnerSecondNames().compareTo(o2.getOwnerSecondNames());
+		
+	}
+	
+	public int compareToTypeOfAnimalsPrefer(Owner o1) {
+		
+		return typeOfAnimalsPrefer.compareTo(o1.getTypeOfAnimalsPrefer());
+		
+	}
+	
+	public int compareToBornDay(Owner o1) {
+		
+		return 0;
+		
 	}
 
 	

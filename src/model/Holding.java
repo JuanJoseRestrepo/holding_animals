@@ -327,17 +327,17 @@ public void getMethodsSortWithTypeOfAnimals(String idClub) {
 public String getMethodsSortWithCode(String idClub) {
 	String msj = "";
 	for (int i = 0; i < clubs.size(); i++) {
+		try{
 		if(clubs.get(i).getIdClub().equals(idClub)) {
 			msj = "Se encontro";
 			ordenarClubesPorId();
 		}else {
-			try {
-				
-			}catch() {
-				
-			}
+			throw new errorIdClubNotFound("No valido el id");
 		}
+	}catch(errorIdClubNotFound e) {
+		System.out.println("No valido el id");
 	}
+}
 	
 	return msj;
 }

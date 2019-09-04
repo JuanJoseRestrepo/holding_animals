@@ -11,6 +11,8 @@ import java.io.ObjectInput;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Club implements Serializable, Comparable<Club>,Comparator<Club> {
@@ -312,9 +314,9 @@ public class Club implements Serializable, Comparable<Club>,Comparator<Club> {
 		return o1.getNameClub().compareTo(o2.getNameClub());
 	}
 	
-	public int compareOrdenarPorFecha(Club o1, Club o2) {
+	public int compareOrdenarPorFecha(Club o1) {
 		
-		return o1.getCreationDate().compareTo(o2.getCreationDate());
+		return formatTheDateOfThis(creationDate).compareTo(formatTheDateOfThis(o1.getCreationDate()));
 		
 	}
 	
@@ -323,5 +325,18 @@ public class Club implements Serializable, Comparable<Club>,Comparator<Club> {
 		return typeOfAnimals.compareTo(o1.getTypeOfAnimals());
 	}
 	
+	public Date formatTheDateOfThis(String dateOfThis) {
+		Date inicialDate = null;
+		SimpleDateFormat dateOfThis1 = new SimpleDateFormat("yyyy-MM-dd");
+		
+		try {
+			inicialDate = dateOfThis1.parse(dateOfThis);
+		}catch(ParseException e) {
+			e.getCause();
+		}
+		
+		
+		return inicialDate;
+	}
 	
 }//finalDeLaClase
