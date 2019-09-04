@@ -40,7 +40,7 @@ public class Club implements Serializable, Comparable<Club>,Comparator<Club> {
 		this.nameClub = nameClub;
 		this.creationDate = creationDate;
 		this.typeOfAnimals = typeOfAnimals;
-		
+		saveObjectsInFileOwners();
 		owners = loadObjectsOwnerAndPets();
 	}
 	
@@ -201,44 +201,6 @@ public class Club implements Serializable, Comparable<Club>,Comparator<Club> {
 	/**
 	 * 
 	 */
-	public ArrayList<Owner> loadOwner(){
-		
-		ArrayList<Owner> ownersitos = new ArrayList<Owner>();
-		File fl = new File("");
-		
-		try {
-		FileReader fi = new FileReader(fl.getAbsoluteFile());
-		BufferedReader br = new BufferedReader(fi);
-		
-		
-		while(br.readLine() != null) {
-			
-			String br1 = br.readLine();
-			
-			String[] b = br1.split(",");
-			ownersitos.add(new Owner(b[0],b[1],b[2],b[3],b[4]));
-			
-		}
-		br.close();
-		
-		} catch (FileNotFoundException e) {
-	
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-		
-		return ownersitos;
-		
-		
-		
-	}
-	
-	/**
-	 * 
-	 */
 	public void delatedOwner(String nombredelMka,String apellidoOwner) {
 		
 		for(int i = 0; i < owners.size();i++) {
@@ -292,8 +254,7 @@ public class Club implements Serializable, Comparable<Club>,Comparator<Club> {
 		msj+= "La fecha de creacion es: " + " " + creationDate+ " ";
 		msj+= "El tipo de animal preferido es: " + " " + typeOfAnimals+ " ";
 		
-		
-		
+	
 		return msj;
 	}
 
@@ -327,7 +288,7 @@ public class Club implements Serializable, Comparable<Club>,Comparator<Club> {
 	
 	public Date formatTheDateOfThis(String dateOfThis) {
 		Date inicialDate = null;
-		SimpleDateFormat dateOfThis1 = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat dateOfThis1 = new SimpleDateFormat("yyyy-mm-dd");
 		
 		try {
 			inicialDate = dateOfThis1.parse(dateOfThis);

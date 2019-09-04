@@ -222,7 +222,7 @@ public class Holding implements Serializable{
 			
 			for(int j = 0; j < clubs.size() -1;j++) {
 				
-				if(clubs.get(j).compareOrdenarPorFecha(clubs.get(j),clubs.get(j+1)) > 0) {
+				if(clubs.get(j).compareOrdenarPorFecha(clubs.get(j+1)) > 0) {
 					Club temp = clubs.get(j);
 					clubs.set(j, clubs.get(j+1));
 					clubs.set(j+1, temp);	
@@ -275,7 +275,7 @@ public void loadOwner(){
 	
 	
 	ArrayList<Owner> ownersitos = new ArrayList<Owner>();
-	File fl = new File("");
+	File fl = new File("Ownersitos.csv");
 	
 	try {
 	FileReader fi = new FileReader(fl.getAbsoluteFile());

@@ -26,7 +26,8 @@ public class Main {
 		System.out.println("4.Eliminas el clubsito");
 		System.out.println("5.Eliminar al dueño :O");
 		System.out.println("6.Eliminar a la mascota");
-		System.out.println("7.Salir del programa");
+		System.out.println("7.Mostrar la informacion ordenada");
+		System.out.println("8.Salir del programa");
 		System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
 		System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
 
@@ -154,8 +155,8 @@ public class Main {
 							System.out.println("3.Crear mascota");
 							System.out.println("4.Eliminas el clubsito");
 							System.out.println("5.Eliminar al dueño :O");
-							System.out.println("6.Eliminar a la mascota");
-							System.out.println("7.Salir del programa");
+							System.out.println("7.Mostrar la informacion ordenada");
+							System.out.println("8.Salir del programa");
 							System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
 							System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
 	
