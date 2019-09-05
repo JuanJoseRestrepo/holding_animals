@@ -40,8 +40,8 @@ public class Club implements Serializable, Comparable<Club>,Comparator<Club> {
 		this.nameClub = nameClub;
 		this.creationDate = creationDate;
 		this.typeOfAnimals = typeOfAnimals;
-		saveObjectsInFileOwners();
 		owners = loadObjectsOwnerAndPets();
+	
 	}
 	
 	/**
@@ -160,27 +160,26 @@ public class Club implements Serializable, Comparable<Club>,Comparator<Club> {
 	 */
 	public ArrayList<Owner> loadObjectsOwnerAndPets() {
 		File fl = new File("OwnerList.txt");
-		ArrayList<Owner> ownersitos = new ArrayList<Owner>();
 		
-		if(fl.isFile()) {
-		try {
-			FileInputStream fr = new FileInputStream(fl.getAbsoluteFile());
-			ObjectInputStream ob = new ObjectInputStream(fr);
-			
-			Owner owner = (Owner) ob.readObject();
-			ownersitos.add(owner);
-			ob.close();
-		}catch(IOException e) {
-			
-			e.getCause();
-			
-		}catch(ClassNotFoundException e) {
-			
-			e.getCause();
-			
+		if(!fl.isFile()) {
+			owners = new ArrayList<Owner>();
+		}else {
+			try {
+				FileInputStream fr = new FileInputStream(fl.getAbsoluteFile());
+				ObjectInputStream ob = new ObjectInputStream(fr);
+				owners = (ArrayList<Owner>) ob.readObject();
+				ob.close(); 
+			}catch(IOException e) {
+				
+				e.getCause();
+				
+			}catch(ClassNotFoundException e) {
+				
+				e.getCause();
+				
+			}
 		}
-	}
-		return ownersitos;
+		return owners;
 }
 	
 	/**
@@ -228,7 +227,7 @@ public class Club implements Serializable, Comparable<Club>,Comparator<Club> {
 		
 	}
 	
-	/**
+	/** 
 	 * 
 	 */
 	public void delatedPetWithName(String idOwner,String namePet){
@@ -300,4 +299,5 @@ public class Club implements Serializable, Comparable<Club>,Comparator<Club> {
 		return inicialDate;
 	}
 	
+			
 }//finalDeLaClase

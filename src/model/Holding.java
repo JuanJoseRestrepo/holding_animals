@@ -24,6 +24,7 @@ public class Holding implements Serializable{
 		clubs = loadFileMocaForClub();
 		loadOwner();
 		loadPet();
+	
 	}
 	
 	public void findClubWithClubAndOwnerAndPet(String idClubs,String idClien,String idPet,String petName, String gender,String typeOfPet,String bornPetDay){
@@ -127,7 +128,7 @@ public class Holding implements Serializable{
 				
 			}
 		}
-		
+		 
 	}
 	
 	public ArrayList<Club> loadFileMocaForClub() {
@@ -220,8 +221,7 @@ public class Holding implements Serializable{
 		
 		for(int i = 0; i < clubs.size();i++) {
 			
-			for(int j = 0; j < clubs.size() -1;j++) {
-				
+			for(int j = 0; j < clubs.size()-1;j++) {
 				if(clubs.get(j).compareOrdenarPorFecha(clubs.get(j+1)) > 0) {
 					Club temp = clubs.get(j);
 					clubs.set(j, clubs.get(j+1));
@@ -233,46 +233,8 @@ public class Holding implements Serializable{
 		
 	}
 	
-public void loadPet(){
-		int x = (int) ((Math.random() *9) + 1);
-		ArrayList<Pet> pets = new ArrayList<Pet>();
-		File fl = new File("Pets.csv");
-		
-		try {
-		FileReader fi = new FileReader(fl.getAbsoluteFile());
-		BufferedReader br = new BufferedReader(fi);
-		while(br.readLine() != null) {
-			String br1 = br.readLine();
-			String[] b = br1.split(",");
-			pets.add(new Pet(b[0],b[1],b[2],b[3],b[4]));
-		}
-		br.close();
-		
-		} catch (FileNotFoundException e) {
-			
-			e.getCause();
-	
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		int j = 0;
-		
-		for(Club miClub:clubs){
-			for(Owner owner: miClub.getOwners()) {
-				for(int i = 0; i < x;i++) {
-					owner.addAnimals(pets.get(j).getIdPet(),pets.get(j).getPetName(),pets.get(j).getGender(),pets.get(j).getTypeOfPet(),pets.get(j).getBornPetDay());
-					j++;
-				}
-				
-			}
-		}
-			
-	}
 
 public void loadOwner(){
-	
 	
 	ArrayList<Owner> ownersitos = new ArrayList<Owner>();
 	File fl = new File("Ownersitos.csv");
@@ -280,8 +242,8 @@ public void loadOwner(){
 	try {
 	FileReader fi = new FileReader(fl.getAbsoluteFile());
 	BufferedReader br = new BufferedReader(fi);
-	while(br.readLine() != null) {	
-		String br1 = br.readLine();
+	String br1;
+	while((br1 = br.readLine()) != null) {	
 		String[] b = br1.split(",");
 		ownersitos.add(new Owner(b[0],b[1],b[2],b[3],b[4]));
 	}
@@ -295,12 +257,52 @@ public void loadOwner(){
 	}
 	int j = 0;
 	for(Club miClub:clubs){
-		for(int k = 0; k < 10000;k++) {
+		for(int k = 0; k < 1000;k++) {
 			miClub.addOwners(ownersitos.get(j).getIdOwner(),ownersitos.get(j).getOwnerNames(),ownersitos.get(j).getOwnerSecondNames(),ownersitos.get(j).getTypeOfAnimalsPrefer(),ownersitos.get(j).getBornDay());
 			j++;
 		}	
 	}
+	
 }
+
+public void loadPet(){
+
+	ArrayList<Pet> pets = new ArrayList<Pet>();
+	File fl = new File("Pets.csv");
+	
+	try {
+	FileReader fi = new FileReader(fl.getAbsoluteFile());
+	BufferedReader br = new BufferedReader(fi);
+	String a = br.readLine();
+	while(a != null) {
+		String[] b = a.split(",");
+		pets.add(new Pet(b[0],b[1],b[2],b[3],b[4]));
+		a = br.readLine();
+	}
+	br.close();
+	
+	} catch (FileNotFoundException e) {
+		
+		e.getCause();
+
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	int j = 0;
+	for(Club miClub:clubs){
+		for(Owner owner: miClub.getOwners()) {
+			int x = (int) ((Math.random() *9) + 1);
+			for(int i = 0; i < x;i++) {
+				owner.addAnimals(pets.get(j).getIdPet(),pets.get(j).getPetName(),pets.get(j).getGender(),pets.get(j).getTypeOfPet(),pets.get(j).getBornPetDay());
+				j++;
+			}
+			
+		}
+	}
+			
+	}
 
 public void ordenateTypeOfAnimals() {
 	for(int i = 0; i < clubs.size();i++) {
